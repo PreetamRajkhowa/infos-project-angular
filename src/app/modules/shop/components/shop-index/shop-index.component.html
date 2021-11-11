@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+      <div class="heading_one">Shop Your Items here.</div>
+  <div class="sub_header">Add items you want to enquire in the cart and go to the cart section to raise a quote.</div>
+      <div class="row">
+      <div class="col-md-4 item_box mb-4" *ngFor="let item of shopItems">
+        <mat-card class="item-card">
+          <div class="card_img">
+            <img [src]="item.img" class="img-responsive">
+          </div>
+          <mat-card-content>
+            <div class="name_text">
+              {{item.name}}
+            </div>
+            <div class="view_details">
+              <a (click)="openDialog(item.name,item.description)">View Details</a>
+            </div>
+            <div class="action_btn">
+              <button mat-raised-button class="click_btn">Add to Cart</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+

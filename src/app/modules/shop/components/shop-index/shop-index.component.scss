@@ -1,0 +1,53 @@
+.item_box{
+  margin-top: 30px;
+}
+
+.mb-4, .my-4 {
+  margin-bottom: 1.5rem!important;
+}
+.card_img{
+  img{
+    width: 100%;
+  }
+}
+.item-card{
+  box-shadow: 0 3px 20px 0 #0000001a;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 20px;
+}
+
+
+.heading_one{
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 30px;
+}
+.sub_header{
+  font-size: 15px;
+    color: #5c6c7c;
+    margin-top: 20px;
+}
+.name_text{
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.action_btn{
+  text-align: center;
+
+}
+
+.click_btn{
+  background-color: #3273dc;
+  color: #ffff;
+}
+.view_details{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}

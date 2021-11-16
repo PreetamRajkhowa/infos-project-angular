@@ -6,14 +6,14 @@
       <div class="col-md-4 item_box mb-4" *ngFor="let item of shopItems">
         <mat-card class="item-card">
           <div class="card_img">
-            <img [src]="item.img" class="img-responsive">
+            <img [src]="item.image_url" class="img-responsive">
           </div>
           <mat-card-content>
             <div class="name_text">
-              {{item.name}}
+              {{item.title}}
             </div>
             <div class="view_details">
-              <a (click)="openDialog(item.name,item.description)">View Details</a>
+              <a (click)="openDialog(item.title,item.description)">View Details</a>
             </div>
             <div class="action_btn">
               <button mat-raised-button class="click_btn" *ngIf="!item.isInCart" (click)="addToCart(item)">Add to Cart</button>

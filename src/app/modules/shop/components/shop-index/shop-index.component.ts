@@ -1,3 +1,4 @@
+import { ShopServiceService } from './../../shop-service.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -10,41 +11,21 @@ import { ItemDetailsDialogComponent } from '../item-details-dialog/item-details-
 })
 export class ShopIndexComponent implements OnInit {
 
-  shopItems!:any;
+  shopItems:any=[];
+  totalItems!:number;
 
-  constructor(private dialog: MatDialog, private router:Router) { }
+  constructor(private dialog: MatDialog, private router:Router, private shopService: ShopServiceService) { }
 
   ngOnInit(): void {
     this.getShopItems();
   }
 
   getShopItems(){
-    this.shopItems=[
-      {
-        "id":1,
-        "name":"Shirt",
-        "img":"https://res.cloudinary.com/vantagecircle/image/upload/v1634811825/prod/giftvoucherdeals/37309_Orange1.png",
-        "description":"Achieve the maximum speed possible on the Web Platform today, and take it further, via WebWorkers and server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model."
-      },
-      {
-        "id":2,
-        "name":"Shirt",
-        "img":"https://res.cloudinary.com/vantagecircle/image/upload/v1634811825/prod/giftvoucherdeals/37309_Orange1.png",
-        "description":"Achieve the maximum speed possible on the Web Platform today, and take it further, via WebWorkers and server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model."
-      },
-      {
-        "id":3,
-        "name":"Shirt",
-        "img":"https://res.cloudinary.com/vantagecircle/image/upload/v1634811825/prod/giftvoucherdeals/37309_Orange1.png",
-        "description":"Achieve the maximum speed possible on the Web Platform today, and take it further, via WebWorkers and server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model."
-      },
-      {
-        "id":4,
-        "name":"Shirt",
-        "img":"https://res.cloudinary.com/vantagecircle/image/upload/v1634811825/prod/giftvoucherdeals/37309_Orange1.png",
-        "description":"Achieve the maximum speed possible on the Web Platform today, and take it further, via WebWorkers and server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by building data models on RxJS, Immutable.js or another push-model."
-      }
-    ]
+    this.shopService.getShopProducts().subscribe((res:any)=>{
+      console.log(res);
+      this.shopItems=res.products;
+      this.totalItems=res.total_products;
+    });
     this.checkForInCart();
   }
 
@@ -70,8 +51,8 @@ export class ShopIndexComponent implements OnInit {
       cart={cart:[]};
     }
     offer.id=data.id;
-    offer.name=data.name;
-    offer.image=data.img;
+    offer.name=data.title;
+    offer.image=data.image_url;
     offer.quantity=1;
     cart.cart.push(offer);
     console.log(cart);

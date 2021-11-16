@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ItemDetailsDialogComponent } from '../item-details-dialog/item-details-dialog.component';
 
 @Component({
@@ -11,7 +12,7 @@ export class ShopIndexComponent implements OnInit {
 
   shopItems!:any;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router:Router) { }
 
   ngOnInit(): void {
     this.getShopItems();
@@ -102,7 +103,7 @@ export class ShopIndexComponent implements OnInit {
   }
 
   goToCart(){
-
+    this.router.navigateByUrl('/cart');
   }
 
 }

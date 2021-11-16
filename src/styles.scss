@@ -11,3 +11,21 @@ body, html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pad-top-20{
+  padding-top: 20px;
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
+}
+
+.weight_active_cursor{
+  font-weight: 500;
+  cursor: pointer;
+  color:red;
+}

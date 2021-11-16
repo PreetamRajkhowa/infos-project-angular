@@ -16,7 +16,8 @@
               <a (click)="openDialog(item.name,item.description)">View Details</a>
             </div>
             <div class="action_btn">
-              <button mat-raised-button class="click_btn">Add to Cart</button>
+              <button mat-raised-button class="click_btn" *ngIf="!item.isInCart" (click)="addToCart(item)">Add to Cart</button>
+              <button mat-raised-button class="click_btn" *ngIf="item.isInCart" (click)="goToCart()">Go to Cart -></button>
             </div>
           </mat-card-content>
         </mat-card>

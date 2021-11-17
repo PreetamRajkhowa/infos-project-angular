@@ -25,8 +25,9 @@ export class ShopIndexComponent implements OnInit {
       console.log(res);
       this.shopItems=res.products;
       this.totalItems=res.total_products;
+      this.checkForInCart();
     });
-    this.checkForInCart();
+
   }
 
   openDialog(name:string,itemData:string) {

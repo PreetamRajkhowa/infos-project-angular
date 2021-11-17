@@ -1,3 +1,4 @@
+import { GlobalServiceService } from './../../../../services/global-service.service';
 import { ShopServiceService } from './../../shop-service.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +15,7 @@ export class ShopIndexComponent implements OnInit {
   shopItems:any=[];
   totalItems!:number;
 
-  constructor(private dialog: MatDialog, private router:Router, private shopService: ShopServiceService) { }
+  constructor(private dialog: MatDialog, private router:Router, private shopService: ShopServiceService, private globalService: GlobalServiceService) { }
 
   ngOnInit(): void {
     this.getShopItems();
@@ -59,6 +60,7 @@ export class ShopIndexComponent implements OnInit {
     console.log(cart);
     window.localStorage.setItem('cart',JSON.stringify(cart));
     this.checkForInCart();
+    this.globalService.getCartCount();
   }
 
   checkForInCart(){

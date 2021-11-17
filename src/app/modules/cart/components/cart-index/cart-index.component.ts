@@ -1,3 +1,4 @@
+import { GlobalServiceService } from './../../../../services/global-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,7 @@ export class CartIndexComponent implements OnInit {
 
   cartItems:any=[];
 
-  constructor() { }
+  constructor(private globalService:GlobalServiceService) { }
 
   ngOnInit(): void {
     this.getCartItems();
@@ -52,6 +53,7 @@ export class CartIndexComponent implements OnInit {
       }
     });
     window.localStorage.setItem('cart',JSON.stringify({cart:this.cartItems}));
+    this.globalService.getCartCount();
   }
 
 }

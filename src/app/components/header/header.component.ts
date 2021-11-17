@@ -1,3 +1,4 @@
+import { GlobalServiceService } from './../../services/global-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  cartCount!:number;
+
+  constructor(private globalService: GlobalServiceService) { }
 
   ngOnInit(): void {
+    this.globalService.cartCount.subscribe((res:number)=>{
+      this.cartCount=res;
+    });
   }
 
 }

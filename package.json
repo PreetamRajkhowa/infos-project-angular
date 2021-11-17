@@ -10,7 +10,7 @@
     "start:dev": "ng serve --port=4200 --configuration='development' --poll=200 --proxy-config proxyconfig.json",
     "start:prod": "ng serve --port=4200 --configuration='production' --poll=200 --proxy-config proxyconfig.json",
     "build:dev": "ng build --watch --poll=200 --sourceMap-true --base-href=/",
-    "build:prod":"ng bgiuild --aot --configuration='production' --watch --poll=200 --base-href=/",
+    "build:prod": "ng bgiuild --aot --configuration='production' --watch --poll=200 --base-href=/",
     "analyze": "ng build --aot --configuration='production' --base-href=/ --stats-json && webpack-bundle-analyzer dist/indo-foreign-surgico/stats.json"
   },
   "private": true,
@@ -28,6 +28,7 @@
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^4.6.1",
     "jquery": "^3.6.0",
+    "ngx-infinite-scroll": "^10.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

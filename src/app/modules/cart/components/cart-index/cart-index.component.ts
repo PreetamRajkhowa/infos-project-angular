@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CartIndexComponent implements OnInit {
 
   cartItems:any=[];
+  showBottom:boolean=true;
 
   constructor(private globalService:GlobalServiceService) { }
 
@@ -54,6 +55,13 @@ export class CartIndexComponent implements OnInit {
     });
     window.localStorage.setItem('cart',JSON.stringify({cart:this.cartItems}));
     this.globalService.getCartCount();
+  }
+
+  checkIfDisabled(event:boolean){
+    if(event==true){
+      this.showBottom=false;
+    }
+
   }
 
 }

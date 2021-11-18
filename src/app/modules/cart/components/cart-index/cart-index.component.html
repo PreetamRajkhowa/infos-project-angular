@@ -17,7 +17,7 @@
           </div>
           <div class="clearfix"></div>
           <div class="border_new"></div>
-          <div class="row">
+          <div class="row" *ngIf="showBottom">
             <div class="col-lg-6">
               <div class="pull-left">
                 <form>
@@ -38,7 +38,7 @@
 
 
       <div class="col-md-4">
-        <infos-cart-right-panel></infos-cart-right-panel>
+        <infos-cart-right-panel (isDisabled)="checkIfDisabled($event)"></infos-cart-right-panel>
       </div>
     </div>
   </div>

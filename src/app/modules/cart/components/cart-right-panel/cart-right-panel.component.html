@@ -33,16 +33,16 @@
         <label class="infos_label">
           Contact Number
         </label>
-        <input type="text" class="infos_input" readonly/>
+        <input type="text" class="infos_input" [(ngModel)]="userDetails.number" readonly/>
       </div>
       <div>
         <label class="infos_label">
           Enter OTP
         </label>
-        <input type="text" class="infos_input"/>
+        <input type="text" class="infos_input" [(ngModel)]="userDetails.otp"/>
       </div>
       <div class="right_panel_btn">
-        <button class="btn btn-primary">Verify & Place Quote</button>
+        <button class="btn btn-primary" (click)="placeQuote()">Verify & Place Quote</button>
       </div>
     </div>
     </mat-card-content>

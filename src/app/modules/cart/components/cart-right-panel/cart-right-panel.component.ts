@@ -25,13 +25,34 @@ export class CartRightPanelComponent implements OnInit {
         "user_name": this.userDetails.name,
         "email_id": this.userDetails.email,
         "phone_number": "+91"+this.userDetails.number
-    }
-    this.cartService.saveUserDetails(postBody).subscribe((res:any)=>{
+    };
 
+    let sentOtpBody={
+      phone_number:"+91"+this.userDetails.number
+    };
+
+    this.cartService.saveUserDetails(postBody).subscribe((res:any)=>{
+      if(res.user_details.id){
+        this.cartService.sendOtp(sentOtpBody).subscribe((res:any)=>{
+          if(res.message=='pending'){
+            this.isStep1=false;
+            this.isStep2=true;
+            this.isDisabled.emit(true);
+          }
+        });
+      }
     });
-    this.isStep1=false;
-    this.isStep2=true;
-    this.isDisabled.emit(true);
+  }
+
+  placeQuote(){
+    let verifyBody={
+      "phone_number": "+91"+this.userDetails.number,
+      "code": this.userDetails.otp
+    };
+
+    this.cartService.verifyOtp(verifyBody).subscribe((res:any)=>{
+      console.log(res);
+    });
   }
 
 }

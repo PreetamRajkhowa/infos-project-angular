@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import { GlobalServiceService } from './services/global-service.service';
+import { SiteInterceptor } from './site.interceptor';
 
 
 @NgModule({
@@ -35,6 +36,9 @@ import { GlobalServiceService } from './services/global-service.service';
       deps: [GlobalServiceService],
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: SiteInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

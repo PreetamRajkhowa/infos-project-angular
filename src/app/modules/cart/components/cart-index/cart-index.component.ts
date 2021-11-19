@@ -10,6 +10,7 @@ export class CartIndexComponent implements OnInit {
 
   cartItems:any=[];
   showBottom:boolean=true;
+  isSuccess:boolean=false;
 
   constructor(private globalService:GlobalServiceService) { }
 
@@ -62,6 +63,10 @@ export class CartIndexComponent implements OnInit {
       this.showBottom=false;
     }
 
+  }
+
+  checkIfIsSuccess(event:boolean){
+    this.isSuccess=event;
   }
 
 }

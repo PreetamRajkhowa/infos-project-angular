@@ -52,26 +52,33 @@ export class CartRightPanelComponent implements OnInit {
     };
 
     let placeProducts:any=window.localStorage.getItem('cart');
+    if(placeProducts && placeProducts!='{cart:[]}'){
+      placeProducts=JSON.parse(placeProducts);
+    }
     let finalPlaceProducts:any=placeProducts.cart.map((n:any)=>{
       return {'name':n.name,'quantity':n.quantity};
     });
 
     let placeQuoteBody={
-      "user_name": this.userDetails.name,
-      "phone_number": "+91"+this.userDetails.number,
-      "email_id": this.userDetails.email,
-      "products": finalPlaceProducts
+      "products_quote":{
+        "user_name": this.userDetails.name,
+        "phone_number": "+91"+this.userDetails.number,
+        "email_id": this.userDetails.email,
+        "products": finalPlaceProducts
+      }
     };
 
     this.cartService.verifyOtp(verifyBody).subscribe((res:any)=>{
       if(res.message=='approved'){
         this.cartService.placeQuote(placeQuoteBody).subscribe((res:any)=>{
-          if(res.order_id){
+          if(res.new_order){
             let sendQuoteBody={
-              "order_id":res.order_id
+              "order_id":res.new_order
             };
             this.cartService.sendQuote(sendQuoteBody).subscribe((res:any)=>{
-              this.isSuccess.emit(true);
+              if(res.sms_to_customer){
+                this.isSuccess.emit(true);
+              }
           });
         }
         });

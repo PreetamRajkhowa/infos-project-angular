@@ -1,5 +1,6 @@
 import { GlobalServiceService } from './../../services/global-service.service';
 import { Component, OnInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   selector: 'infos-header',
@@ -16,6 +17,14 @@ export class HeaderComponent implements OnInit {
     this.globalService.cartCount.subscribe((res:number)=>{
       this.cartCount=res;
     });
+  }
+
+  closeSideNav(){
+    $('#mySidenav').css('width','0px');
+  }
+
+  openSideNav(){
+    $('#mySidenav').css('width','250px');
   }
 
 }

@@ -11,4 +11,8 @@ export class ShopServiceService {
   getShopProducts(){
     return this.http.get('/api/products?page=0&limit=100');
   }
+
+  getLatestProducts(){
+    return this.http.get('/api/latest/products');
+  }
 }

@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import { GlobalServiceService } from './services/global-service.service';
 import { SiteInterceptor } from './site.interceptor';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SiteInterceptor } from './site.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    LazyLoadImageModule
 
   ],
   providers: [

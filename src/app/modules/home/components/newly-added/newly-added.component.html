@@ -9,7 +9,7 @@
                         <div class="card-flyer">
                             <div class="text-box">
                                 <div class="image-box">
-                                    <img src="{{item.image_url}}" alt="" />
+                                    <img [defaultImage]="''" [lazyLoad]="item.image_url" />
                                 </div>
                                 <div class="text-container">
                                     <h6>{{item.title}}</h6>

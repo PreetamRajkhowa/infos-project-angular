@@ -6,6 +6,7 @@ import { CartRoutingModule } from './cart-routing.module';
 import { CartIndexComponent } from './components/cart-index/cart-index.component';
 import { CartRightPanelComponent } from './components/cart-right-panel/cart-right-panel.component';
 import { FormsModule } from '@angular/forms';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     CartRoutingModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    LazyLoadImageModule
   ]
 })
 export class CartModule { }

@@ -6,7 +6,7 @@
       <div class="col-md-4 item_box mb-4" *ngFor="let item of shopItems">
         <mat-card class="item-card">
           <div class="card_img">
-            <img [src]="item.image_url" class="img-responsive">
+            <img [defaultImage]="''" [lazyLoad]="item.image_url" class="img-responsive">
           </div>
           <mat-card-content>
             <div class="name_text">

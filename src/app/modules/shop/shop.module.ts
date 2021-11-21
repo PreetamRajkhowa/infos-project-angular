@@ -7,6 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { ItemDetailsDialogComponent } from './components/item-details-dialog/item-details-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 
@@ -20,7 +21,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     ShopRoutingModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    LazyLoadImageModule
   ]
 })
 export class ShopModule { }

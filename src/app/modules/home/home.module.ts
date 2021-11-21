@@ -1,3 +1,4 @@
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,11 +13,12 @@ import { HomeAboutUsComponent } from './components/home-about-us/home-about-us.c
   declarations: [
     HomeCarouselComponent,
     NewlyAddedComponent,
-    HomeAboutUsComponent
+    HomeAboutUsComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    LazyLoadImageModule
 
   ]
 })

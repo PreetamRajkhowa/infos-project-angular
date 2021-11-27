@@ -19,7 +19,7 @@ export class CartIndexComponent implements OnInit {
   }
 
   getCartItems(){
-    let check:any=window.localStorage.getItem('cart');
+    let check:any=window.localStorage.getItem('infoscart');
     let cart:any;
     if(check && check!='{cart:[]}'){
       cart=JSON.parse(check);
@@ -36,7 +36,7 @@ export class CartIndexComponent implements OnInit {
             m.quantity--;
           }
         });
-        window.localStorage.setItem('cart',JSON.stringify({cart:this.cartItems}));
+        window.localStorage.setItem('infoscart',JSON.stringify({cart:this.cartItems}));
       }
     }else{
       this.cartItems.forEach((m:any)=>{
@@ -44,7 +44,7 @@ export class CartIndexComponent implements OnInit {
           m.quantity++;
         }
       });
-      window.localStorage.setItem('cart',JSON.stringify({cart:this.cartItems}));
+      window.localStorage.setItem('infoscart',JSON.stringify({cart:this.cartItems}));
     }
   }
 
@@ -54,7 +54,7 @@ export class CartIndexComponent implements OnInit {
         this.cartItems.splice(index,1);
       }
     });
-    window.localStorage.setItem('cart',JSON.stringify({cart:this.cartItems}));
+    window.localStorage.setItem('infoscart',JSON.stringify({cart:this.cartItems}));
     this.globalService.getCartCount();
   }
 

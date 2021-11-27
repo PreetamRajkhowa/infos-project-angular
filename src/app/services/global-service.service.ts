@@ -15,7 +15,7 @@ export class GlobalServiceService {
   }
 
   getCartCount(){
-    let check=window.localStorage.getItem('cart');
+    let check=window.localStorage.getItem('infoscart');
     let cart:any;
     if(check && check!='{cart:[]}'){
       cart=JSON.parse(check);

@@ -46,7 +46,7 @@ export class ShopIndexComponent implements OnInit {
   addToCart(data:any){
     let cart:any;
     let offer:any={};
-    let check=window.localStorage.getItem('cart');
+    let check=window.localStorage.getItem('infoscart');
     if(check && check!='{cart:[]}'){
       cart=JSON.parse(check);
     }else{
@@ -58,13 +58,13 @@ export class ShopIndexComponent implements OnInit {
     offer.quantity=1;
     cart.cart.push(offer);
     console.log(cart);
-    window.localStorage.setItem('cart',JSON.stringify(cart));
+    window.localStorage.setItem('infoscart',JSON.stringify(cart));
     this.checkForInCart();
     this.globalService.getCartCount();
   }
 
   checkForInCart(){
-    let deals:any=window.localStorage.getItem('cart');
+    let deals:any=window.localStorage.getItem('infoscart');
     let tempArray=[];
     if(deals && deals!='{cart:[]}'){
      deals=JSON.parse(deals);

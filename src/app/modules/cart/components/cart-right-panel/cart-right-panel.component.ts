@@ -51,7 +51,7 @@ export class CartRightPanelComponent implements OnInit {
       "code": this.userDetails.otp
     };
 
-    let placeProducts:any=window.localStorage.getItem('cart');
+    let placeProducts:any=window.localStorage.getItem('infoscart');
     if(placeProducts && placeProducts!='{cart:[]}'){
       placeProducts=JSON.parse(placeProducts);
     }

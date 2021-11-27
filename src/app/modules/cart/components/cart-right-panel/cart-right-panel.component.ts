@@ -1,3 +1,4 @@
+import { GlobalServiceService } from './../../../../services/global-service.service';
 import { CartServiceService } from './../../cart-service.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class CartRightPanelComponent implements OnInit {
   @Output() isDisabled: EventEmitter<any> = new EventEmitter(false);
   @Output() isSuccess: EventEmitter<any>= new EventEmitter(false);
 
-  constructor(private cartService:CartServiceService) { }
+  constructor(private cartService:CartServiceService, private globalService: GlobalServiceService) { }
 
   ngOnInit(): void {
   }
@@ -33,14 +34,20 @@ export class CartRightPanelComponent implements OnInit {
     };
 
     this.cartService.saveUserDetails(postBody).subscribe((res:any)=>{
-      if(res.user_details.id){
+      if(res.success==true){
         this.cartService.sendOtp(sentOtpBody).subscribe((res:any)=>{
-          if(res.message=='pending'){
+          if(res.success==true){
             this.isStep1=false;
             this.isStep2=true;
             this.isDisabled.emit(true);
+          }else{
+            alert('Error!! Sending OTP Failed. Please refresh the page and try again.');
+            return;
           }
         });
+      }else{
+        alert('Error!! Something went Wrong.');
+        return;
       }
     });
   }
@@ -69,19 +76,27 @@ export class CartRightPanelComponent implements OnInit {
     };
 
     this.cartService.verifyOtp(verifyBody).subscribe((res:any)=>{
-      if(res.message=='approved'){
+      if(res.success==true){
         this.cartService.placeQuote(placeQuoteBody).subscribe((res:any)=>{
-          if(res.new_order){
+          if(res.success==true){
             let sendQuoteBody={
               "order_id":res.new_order
             };
             this.cartService.sendQuote(sendQuoteBody).subscribe((res:any)=>{
               if(res.sms_to_customer){
+                window.localStorage.setItem('infoscart','{cart:[]}');
+                this.globalService.getCartCount();
                 this.isSuccess.emit(true);
               }
           });
+        }else{
+          alert('Error!! Something went wrong. Please refresh the page and try again.');
+          return;
         }
         });
+      }else{
+        alert('Error!! OTP Verification Failled. Please enter the correct OTP.');
+        return;
       }
     });
   }

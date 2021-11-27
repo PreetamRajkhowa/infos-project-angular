@@ -9,10 +9,12 @@
         <div class="row">
           <div id="navbarSupportedContent" class="collapse navbar-collapse">
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item"><a [routerLink]="['/home']" class="nav-link  font-weight-bold"><mat-icon>home</mat-icon><div>Home</div></a></li>
-                  <li class="nav-item"><a [routerLink]="['/shop']" class="nav-link  font-weight-bold"><mat-icon>store</mat-icon><div>Shop</div></a></li>
-                  <li class="nav-item"><a [routerLink]="['/cart']" *ngIf="cartCount>0" class="nav-link  font-weight-bold"><mat-icon matBadge="{{cartCount}}" matBadgeColor="warn">shopping_cart</mat-icon><div>Cart</div></a>
-                    <a [routerLink]="['/cart']" *ngIf="cartCount==0" class="nav-link  font-weight-bold"><mat-icon>shopping_cart</mat-icon><div>Cart</div></a>
+                  <li class="nav-item"><a [routerLink]="['/home']" routerLinkActive="link_active" class="nav-link  font-weight-bold"><mat-icon>home</mat-icon><div>Home</div></a></li>
+
+                  <li class="nav-item"><a [routerLink]="['/shop']" routerLinkActive="link_active" class="nav-link  font-weight-bold"><mat-icon>store</mat-icon><div>Shop</div></a></li>
+
+                  <li class="nav-item"><a [routerLink]="['/cart']" routerLinkActive="link_active" *ngIf="cartCount>0" class="nav-link  font-weight-bold"><mat-icon matBadge="{{cartCount}}" matBadgeColor="warn">shopping_cart</mat-icon><div>Cart</div></a>
+                    <a [routerLink]="['/cart']" routerLinkActive="link_active" *ngIf="cartCount==0" class="nav-link  font-weight-bold"><mat-icon>shopping_cart</mat-icon><div>Cart</div></a>
                   </li>
               </ul>
           </div>

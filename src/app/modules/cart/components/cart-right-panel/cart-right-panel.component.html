@@ -7,42 +7,42 @@
       <div id="step1" *ngIf="isStep1">
       <div>
         <label class="infos_label">
-          Name
+          Name <span class="req">*</span>
         </label>
         <input type="text" class="infos_input" name="name" [(ngModel)]="userDetails.name"/>
       </div>
       <div>
         <label class="infos_label">
-          Email ID
+          Email ID <span class="req">*</span>
         </label>
         <input type="text" class="infos_input" name="email" [(ngModel)]="userDetails.email"/>
       </div>
       <div>
         <label class="infos_label">
-          Contact Number
+          Contact Number <span class="req">*</span>
         </label>
         <input type="text" class="infos_input" name="number" [(ngModel)]="userDetails.number"/>
       </div>
       <div class="right_panel_btn">
-        <button class="btn btn-primary" (click)="submitUserDetails()">Submit</button>
+        <button class="btn btn-primary cart_btn" (click)="submitUserDetails()" [disabled]="!userDetails.name?.trim().length || !userDetails.email?.trim().length || !userDetails.number?.trim().length">Submit</button>
       </div>
     </div>
 
     <div id="step1" *ngIf="isStep2">
       <div>
         <label class="infos_label">
-          Contact Number
+          Contact Number <span class="req">*</span>
         </label>
-        <input type="text" class="infos_input" [(ngModel)]="userDetails.number" readonly/>
+        <input type="text" class="infos_input" [(ngModel)]="userDetails.number" style="background:#F1F1EC;" readonly/>
       </div>
       <div>
         <label class="infos_label">
-          Enter OTP
+          Enter OTP <span class="req">*</span>
         </label>
         <input type="text" class="infos_input" [(ngModel)]="userDetails.otp"/>
       </div>
       <div class="right_panel_btn">
-        <button class="btn btn-primary" (click)="placeQuote()">Verify & Place Quote</button>
+        <button class="btn btn-primary cart_btn" (click)="placeQuote()" [disabled]="!userDetails.otp?.trim().length">Verify & Place Quote</button>
       </div>
     </div>
     </mat-card-content>

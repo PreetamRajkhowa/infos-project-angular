@@ -13,6 +13,6 @@ export class ShopServiceService {
   }
 
   getLatestProducts(){
-    return this.http.get('/api/latest/products');
+    return this.http.get('/api/products/latest');
   }
 }
